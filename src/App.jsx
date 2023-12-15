@@ -15,6 +15,7 @@ import Pages from "./component/MynetWorkPages/pages/Pages";
 import NewsLetters from "./component/MynetWorkPages/NewsLetters/NewsLetters";
 import Hashtags from "./component/MynetWorkPages/Hashtag/Hashtags";
 import Following from "./component/MynetWorkPages/Following/Following";
+import Profile from "./pages/Profile/Profile";
 
 export default function App() {
   return (
@@ -27,6 +28,7 @@ export default function App() {
         <Route path="/messaging" element={<Messaging />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/forbusiness" element={<ForBusiness />} />
+        <Route path="/profile" element={<Profile/>} />
       </Routes>
       {/* My Network Page Nested Routing  */}
       <Routes>

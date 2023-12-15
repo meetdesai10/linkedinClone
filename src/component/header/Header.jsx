@@ -146,7 +146,7 @@ const Functions = styled.div`
 `;
 const Me = styled.div`
   position: relative;
-  & > div {
+  div {
     position: absolute;
     top: 50px;
     padding: 10px 25px;
@@ -243,17 +243,18 @@ export default function Header() {
             </NavLink>
           </div>
           <Me>
-            <img
-              style={{
-                height: "30px",
-                width: "30px",
-                borderRadius: "50%",
-                objectFit: "cover",
-              }}
-              src={me}
-              alt=""
-            />
-            <p>Me</p>
+              <img
+                onClick={() => navigate("/profile")}
+                style={{
+                  height: "30px",
+                  width: "30px",
+                  borderRadius: "50%",
+                  objectFit: "cover",
+                }}
+                src={me}
+                alt=""
+              />
+              <p>Me</p>
             <div onClick={() => navigate("/login")}>Sign Out</div>
           </Me>
         </Functions>

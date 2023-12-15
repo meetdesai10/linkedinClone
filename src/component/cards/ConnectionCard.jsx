@@ -4,7 +4,7 @@ import profile from "../../../public/connectionCardImages/image.avif";
 import profileBackground from "../../../public/homeleftside/card-bg.svg";
 import mutualLogo from "../../../public/connectionCardImages/mutualLogo.svg";
 import connectionLogo from "../../../public/connectionCardImages/connectBtnLogo.svg";
-export default function ConnectionCard({data}) {
+export default function ConnectionCard({ data }) {
   return (
     <ConnectionCardContainer>
       <div className="images">
@@ -42,6 +42,7 @@ const ConnectionCardContainer = styled.div`
       border-top-left-radius: 10px;
     }
     .profilePicture {
+      cursor: pointer;
       position: absolute;
       top: 20px;
       left: 45px;
