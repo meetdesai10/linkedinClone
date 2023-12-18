@@ -4,63 +4,84 @@ import { Button, FormGroup, Input, Label } from "reactstrap";
 import styled from "styled-components";
 
 export default function ContactEditModal() {
-  let [messagingOptions, setMessagingOptions] = useState([]);
   let [websiteOptions, setWebsiteOptions] = useState([]);
-  const addWebsiteOption = (
-    <>
-      <FormGroup>
-        <Label for="examplePassword" style={{ color: "#666" }}>
-          Website Url
-        </Label>
-        <Input
-          id="examplePassword"
-          placeholder="Enter your Website Url"
-          type="text"
-        />
-      </FormGroup>
-      <FormGroup>
-        <Label for="exampleSelect" style={{ color: "#666" }}>
-          Website type
-        </Label>
-        <Input id="exampleSelect" name="select" type="select">
-          <option>Personal</option>
-          <option>Company</option>
-          <option>RSS feed</option>
-          <option>Portfolio</option>
-          <option>Other</option>
-        </Input>
-      </FormGroup>
-    </>
-  );
-  function addWebsiteOptionData() {
-    setWebsiteOptions([...websiteOptions, addWebsiteOption]);
+  let [messagingOptions, setMessagingOptions] = useState([]);
+  const generateWebsiteOption = () => {
+    let uniqueKey = Math.random().toString(36).substring(2, 9);
+    return {
+      id: uniqueKey,
+      content: (
+        <>
+          <FormGroup>
+            <Label for="examplePassword" style={{ color: "#666" }}>
+              Website Url
+            </Label>
+            <Input
+              id="examplePassword"
+              placeholder="Enter your Website Url"
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleSelect" style={{ color: "#666" }}>
+              Website type
+            </Label>
+            <Input id="exampleSelect" name="select" type="select">
+              <option>Personal</option>
+              <option>Company</option>
+              <option>RSS feed</option>
+              <option>Portfolio</option>
+              <option>Other</option>
+            </Input>
+          </FormGroup>
+        </>
+      ),
+    };
+  };
+  function addWebsiteOption() {
+    const newWebsiteOption = generateWebsiteOption();
+    setWebsiteOptions([...websiteOptions, newWebsiteOption]);
   }
-  function removeWebsiteOption(index) {
-    let data = websiteOptions.filter((ele, i) => i != index);
+  function removeWebsiteOption(uniqeId) {
+    let data = websiteOptions.filter((ele) => ele.id !== uniqeId);
     setWebsiteOptions(data);
   }
-  const addMessagingOption = (
-    <>
-      <FormGroup>
-        <Label for="examplePassword" style={{ color: "#666" }}>
-          Username
-        </Label>
-        <Input id="examplePassword" placeholder="Enter username" type="text" />
-      </FormGroup>
-      <FormGroup>
-        <Label for="exampleSelect" style={{ color: "#666" }}>
-          Service
-        </Label>
-        <Input id="exampleSelect" name="select" type="select">
-          <option>skype</option>
-          <option>ICQ</option>
-          <option>Google Hangouts</option>
-          <option>QQ</option>
-          <option>WeChat</option>
-        </Input>
-      </FormGroup>
-    </>
-  );
+  const generateMessageOption = () => {
+    let uniqueKey = Math.random().toString(36).substr(2, 9);
+    return {
+      id: uniqueKey,
+      content: (
+        <>
+          <FormGroup>
+            <Label for="examplePassword" style={{ color: "#666" }}>
+              Username
+            </Label>
+            <Input
+              id="examplePassword"
+              placeholder="Enter username"
+              type="text"
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleSelect" style={{ color: "#666" }}>
+              Service
+            </Label>
+            <Input id="exampleSelect" name="select" type="select">
+              <option>skype</option>
+              <option>ICQ</option>
+              <option>Google Hangouts</option>
+              <option>QQ</option>
+              <option>WeChat</option>
+            </Input>
+          </FormGroup>
+        </>
+      ),
+    };
+  };
+  function addMessageOption() {
+    let data = generateMessageOption();
+    setMessagingOptions([...messagingOptions, data]);
+  }
   function removeMessagingOption(index) {
     let messagingData = messagingOptions.filter((ele, i) => i !== index);
     setMessagingOptions(messagingData);
@@ -176,10 +197,11 @@ export default function ContactEditModal() {
         {websiteOptions.map((option, index) => {
           return (
             <div key={index}>
-              {option}
+              {option.id}
+              {option.content}
               <Button
                 className="bg-danger mt-3 mb-3 p-1"
-                onClick={() => removeWebsiteOption(index)}
+                onClick={() => removeWebsiteOption(option.id)}
               >
                 {" "}
                 <Delete /> Remove
@@ -187,7 +209,7 @@ export default function ContactEditModal() {
             </div>
           );
         })}
-        <Button className="p-2" onClick={() => addWebsiteOptionData()}>
+        <Button className="p-2" onClick={() => addWebsiteOption()}>
           + Add Website
         </Button>
       </div>
@@ -196,10 +218,10 @@ export default function ContactEditModal() {
         {messagingOptions.map((option, index) => {
           return (
             <div key={index}>
-              {option}
+              {option.content}
               <Button
                 className="bg-danger mt-3 mb-3 p-1"
-                onClick={() => removeMessagingOption(index)}
+                onClick={() => removeMessagingOption(option.id)}
               >
                 <Delete /> Remove
               </Button>
@@ -207,12 +229,7 @@ export default function ContactEditModal() {
           );
         })}
 
-        <Button
-          className="p-2"
-          onClick={() =>
-            setMessagingOptions([...messagingOptions, addMessagingOption])
-          }
-        >
+        <Button className="p-2" onClick={() => addMessageOption()}>
           + add messaging option
         </Button>
       </div>

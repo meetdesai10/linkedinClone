@@ -10,8 +10,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <Provider store={Store}>
-        {/* <App /> */}
-        <Desai/>
+        <App />
+        {/* <Desai/> */}
       </Provider>
     </BrowserRouter>
   </React.StrictMode>
