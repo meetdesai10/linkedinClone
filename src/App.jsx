@@ -1,5 +1,6 @@
 import React from "react";
 import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
 import { Routes, Route } from "react-router-dom";
 import Login from "./pages/login/Login";
 import Home from "./pages/home/Home";
@@ -28,7 +29,7 @@ export default function App() {
         <Route path="/messaging" element={<Messaging />} />
         <Route path="/notifications" element={<Notifications />} />
         <Route path="/forbusiness" element={<ForBusiness />} />
-        <Route path="/profile" element={<Profile/>} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
       {/* My Network Page Nested Routing  */}
       <Routes>

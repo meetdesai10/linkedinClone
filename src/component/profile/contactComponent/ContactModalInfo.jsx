@@ -5,12 +5,12 @@ import email from "../../../../public/profilePage/contactInfo/email.svg";
 import calendar from "../../../../public/profilePage/contactInfo/calendar.svg";
 import styled from "styled-components";
 import {
-  Button,
   Dialog,
   DialogTitle,
   DialogContent,
   DialogActions,
 } from "@mui/material";
+import ContactEditModal from "./contactEditModal/ContactEditModal";
 export default function ContactModalInfo() {
   const [open, setOpen] = useState(false);
 
@@ -24,7 +24,9 @@ export default function ContactModalInfo() {
   return (
     <ContactModalContainer>
       <div className="modalHeader">
-        <div style={{fontSize:"20px",marginBottom:"10px"}}>Contact info</div>
+        <div style={{ fontSize: "20px", marginBottom: "10px" }}>
+          Contact info
+        </div>
         <div>
           <img
             style={{ cursor: "pointer" }}
@@ -32,13 +34,15 @@ export default function ContactModalInfo() {
             alt=""
             onClick={handleOpen}
           />
-          <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
+          <Dialog sx={{marginTop:"40px"}} open={open} onClose={handleClose} maxWidth="sm" fullWidth>
             <DialogTitle
               style={{
                 fontWeight: "600",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
+                margin:"0",
+                padding:"0px 10px"
               }}
             >
               <div>Edit contact info</div>
@@ -51,8 +55,10 @@ export default function ContactModalInfo() {
             </DialogTitle>
             <hr />
             <DialogContent
-              style={{ height: "500px", width: "500px" }}
-            ></DialogContent>
+              style={{ height: "500px", width: "100%" }}
+            >
+              <ContactEditModal/>
+            </DialogContent>
           </Dialog>
         </div>
       </div>

@@ -53,7 +53,7 @@ export default function ProfileComponent() {
               </DialogTitle>
               <hr />
 
-              <DialogContent style={{ height: "250px" }}>
+              <DialogContent style={{ height: "300px" }}>
                 <ContactModalInfo />
               </DialogContent>
             </Dialog>
