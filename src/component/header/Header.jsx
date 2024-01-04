@@ -174,6 +174,7 @@ const Me = styled.div`
   @media (max-width: 1218px) {
     p {
       display: none;
+      width: fit-content;
     }
   }
 `;
@@ -243,18 +244,18 @@ export default function Header() {
             </NavLink>
           </div>
           <Me>
-              <img
-                onClick={() => navigate("/profile")}
-                style={{
-                  height: "30px",
-                  width: "30px",
-                  borderRadius: "50%",
-                  objectFit: "cover",
-                }}
-                src={me}
-                alt=""
-              />
-              <p>Me</p>
+            <img
+              onClick={() => navigate("/profile")}
+              style={{
+                height: "30px",
+                width: "30px",
+                borderRadius: "50%",
+                objectFit: "cover",
+              }}
+              src={me}
+              alt=""
+            />
+            <p>Me</p>
             <div onClick={() => navigate("/login")}>Sign Out</div>
           </Me>
         </Functions>

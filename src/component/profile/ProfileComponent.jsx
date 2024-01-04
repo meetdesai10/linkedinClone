@@ -3,14 +3,6 @@ import styled from "styled-components";
 import banner from "../../../public/homeleftside/card-bg.svg";
 import ProfilePicture from "../../../public/ProfilePictures/image1.avif";
 import connectionLogo from "../../../public/profilePage/btnLogo.svg";
-import {
-  Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogActions,
-} from "@mui/material";
-import ContactModalInfo from "./contactComponent/ContactModalInfo";
 
 export default function ProfileComponent() {
   const [open, setOpen] = useState(false);
@@ -33,30 +25,7 @@ export default function ProfileComponent() {
         <div className="location">
           Surat,Gujrat,India.{" "}
           <div className="contactInfo">
-            <p onClick={handleOpen}>Contact info</p>
-            <Dialog open={open} onClose={handleClose} maxWidth="sm" fullWidth>
-              <DialogTitle
-                style={{
-                  fontWeight: "600",
-                  display: "flex",
-                  justifyContent: "space-between",
-                  alignItems: "center",
-                }}
-              >
-                <div>Meet Desai</div>
-                <div
-                  style={{ fontSize: "25px", cursor: "pointer" }}
-                  onClick={handleClose}
-                >
-                  x
-                </div>
-              </DialogTitle>
-              <hr />
-
-              <DialogContent style={{ height: "300px" }}>
-                <ContactModalInfo />
-              </DialogContent>
-            </Dialog>
+            <p>Contact info</p>
           </div>
         </div>
         <div className="Connections">
